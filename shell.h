@@ -12,9 +12,9 @@
 extern char **environ;
 
 /* built function*/
-void debut_shell(void);
-void non_interactive_mode(char *token, int *status);
-ssize_t read_command(char **line, size_t *size_line);
+void start_shell(void);
+void inactive_mode(char *token, int *status);
+ssize_t command_reader(char **line, size_t *size_line);
 void handle_exit_status(int my_status, char **single_command,
 char **token, int *status);
 void handle_custom_exit(int my_status, char **commands,

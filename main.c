@@ -15,7 +15,7 @@ int main(void)
 	{
 		while (getline(&line, &size_line, stdin) != -1)
 		{
-			non_interactive_mode(line, &status);
+			inactive_mode(line, &status);
 		}
 		if (line)
 		{
@@ -24,16 +24,16 @@ int main(void)
 		}
 		return (status);
 	}
-	debut_shell();
+	start_shell();
 	return (0);
 }
 /**
- * non_interactive_mode - Executes shell commands in non_nteractive_mode
+ * inactive_mode - Executes shell commands in non_nteractive_mode
  * @token: The string containing commands separated by newline characters
  * @status: integer store the number
  * Return: Returns status.
  */
-void non_interactive_mode(char *token, int *status)
+void inactive_mode(char *token, int *status)
 {
 	char **single_command;
 	char *envp[] = {NULL};

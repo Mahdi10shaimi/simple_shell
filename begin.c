@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * debut_shell - Starts the shell's main loop
+ * start_shell - Starts the shell's main loop
  *
  * Description: Initializes the shell, handles user input,
  * tokenizes commands and executes them.
  */
-void debut_shell(void)
+void start_shell(void)
 {
 	char *line = NULL, **commands, *envp[] = {NULL};
 	size_t size_line = 0;
@@ -15,7 +15,7 @@ void debut_shell(void)
 
 	while (1)
 	{
-		nread = read_command(&line, &size_line);
+		nread = command_reader(&line, &size_line);
 		if (nread == -1)
 			handle_getline_error(line);
 		commands = tokenize_string(line, " \n\t");
@@ -52,13 +52,13 @@ void debut_shell(void)
 
 
 /**
- * read_command - Reads a line of command from the user
+ * command_reader - Reads a line of command from the user
  * @line: The line buffer to store command
  * @size_line: The size of the line buffer
  *
  * Return: Returns the number of characters read.
  */
-ssize_t read_command(char **line, size_t *size_line)
+ssize_t command_reader(char **line, size_t *size_line)
 {
 	write(STDOUT_FILENO, "#cisfun$ ", 9);
 	return (getline(line, size_line, stdin));
